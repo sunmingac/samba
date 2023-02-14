@@ -1,0 +1,16 @@
+version: '3'
+services:
+  samba:
+    build:
+      context: .
+      args:
+        USERNAME: sambauser
+        PASSWORD: password
+    volumes:
+      - ./shared:/home/sambauser
+    # ports:
+    #   - 139:139
+    #   - 445:445
+    restart: unless-stopped
+    privileged: true
+    network_mode: host
